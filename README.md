@@ -1,6 +1,6 @@
 
 ### run
-$ python ./dags/example.py 
+$ python ./dags/mydag.py 
 
 ### useful commands
 ```

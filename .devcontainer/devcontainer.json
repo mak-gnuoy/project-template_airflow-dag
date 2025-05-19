@@ -8,14 +8,25 @@
 		// Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
 		"dockerfile": "../Dockerfile"
 	},
-
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-azuretools.vscode-containers",
+				"ms-python.python",
+				"ms-python.black-formatter"
+			],
+			"settings": {
+				"editor.formatOnSave": true,
+				"python.formatting.provider": "black"
+			}
+		}
+	},
 	"mounts": [
-		"source=${localWorkspaceFolder}/conf/airflow.cfg,target=/opt/airflow/airflow.cfg,type=bind,consistency=cached",
+		"source=${localWorkspaceFolder}/config/airflow.cfg,target=/opt/airflow/airflow.cfg,type=bind,consistency=cached",
 		"source=${localWorkspaceFolder}/dags,target=/opt/airflow/dags,type=bind,consistency=cached",
 		"source=${localWorkspaceFolder}/logs,target=/opt/airflow/logs,type=bind,consistency=cached",
 		"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind,consistency=cached"
 	],
-	
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 
@@ -23,7 +34,7 @@
 	// "forwardPorts": [],
 
 	// Uncomment the next line to run commands after the container is created.
-	"postCreateCommand": "airflow db init && docker pull python",
+	"postCreateCommand": "airflow db migrate"
 
 	// Configure tool-specific properties.
 	// "customizations": {},
