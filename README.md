@@ -1,6 +1,8 @@
 
 ### run
-$ python ./dags/mydag.py 
+```
+open browser with http://localhost:8080, then trigger to start dag
+```
 
 ### useful commands
 ```
@@ -24,3 +26,4 @@ $ airflow tasks test example transform 2015-06-01
 
 # start a web server in debug mode in the background
 $ airflow webserver --debug &
+```
